@@ -9,4 +9,7 @@ export default {
   placeholder: '#BBC3CE',
   borderColor: '#EFEFEF',
   warning: '#FF5C76',
+  activeTab: '#4552CB',
+  inactiveTab: '#BBC3CE',
+  lightGrey: '#F8F7FB',
 };

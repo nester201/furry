@@ -1,21 +1,24 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import ArrowSVG from '../../../assets/icons/arrow.svg';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, ViewStyle } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 type Props = {
   color: string;
+  style?: ViewStyle;
 };
 
-const BackButton: React.FC<Props> = ({ color }) => {
+const BackButton: React.FC<Props> = ({ color, style }) => {
   const navigation = useNavigation();
+
+  const containerStyle = useMemo(() => [styles.container, style && style], [style]);
 
   const handlePressBack = useCallback(() => {
     navigation.goBack();
   }, [navigation]);
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handlePressBack}>
+    <TouchableOpacity style={containerStyle} onPress={handlePressBack}>
       <ArrowSVG width={32} height={32} fill={color} />
     </TouchableOpacity>
   );

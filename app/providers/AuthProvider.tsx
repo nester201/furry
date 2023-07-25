@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import { auth, db, login, logout, register } from '../firebase';
 import { addDoc, collection } from 'firebase/firestore';
 import { onAuthStateChanged, User } from 'firebase/auth';
+import { saveToStorage } from '@app/services/auth/auth.helper';
 
 interface IContext {
   user: User | null;
@@ -30,8 +31,11 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
       await addDoc(collection(db, 'users'), {
         id: user.uid,
         displayName: fullName,
+        city: 'no city',
+        phoneNumber: 'no number',
         avatar: '',
       });
+      await saveToStorage(user);
     } catch (error: any) {
       Alert.alert('Error reg', error);
     } finally {

@@ -1,12 +1,15 @@
-import React, { memo, ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { memo, ReactNode, useMemo } from 'react';
+import { StyleSheet, View, ViewStyle } from 'react-native';
 
 type Props = {
   children: ReactNode;
+  style?: ViewStyle;
 };
 
-const FilledView: React.FC<Props> = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+const FilledView: React.FC<Props> = ({ children, style }) => {
+  const containerStyle = useMemo(() => [styles.container, style && style], [style]);
+
+  return <View style={containerStyle}>{children}</View>;
 };
 
 export default memo(FilledView);

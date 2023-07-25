@@ -4,7 +4,7 @@ import Checkbox from 'expo-checkbox';
 import { BOX_SHADOW } from '@theme/style';
 import colors from '@theme/colors';
 import { Controller, FormProvider, SubmitHandler, useForm } from 'react-hook-form';
-import { IData } from '@app/interface/IData';
+import { IUser } from '@app/interface/IUser';
 import Input from '@ui/Input';
 import MainButton from '@ui/MainButton';
 import { useAuth } from '@hooks/useAuth';
@@ -15,10 +15,10 @@ type Props = {
 
 const RegisterForm: React.FC<Props> = ({ isReg }) => {
   const { isLoading, login, register } = useAuth();
-  const { control, handleSubmit, ...fetchMore } = useForm<IData>();
+  const { control, handleSubmit, ...fetchMore } = useForm<IUser>();
   const [isCheck, setIsCheck] = useState(false);
 
-  const onSubmit: SubmitHandler<IData> = useCallback(
+  const onSubmit: SubmitHandler<IUser> = useCallback(
     async data => {
       try {
         if (isReg) {

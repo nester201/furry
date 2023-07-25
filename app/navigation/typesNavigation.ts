@@ -3,7 +3,12 @@ export type TypeRootStackParamList = {
   Auth: undefined;
   RegisterScreen: undefined;
   LoginScreen: undefined;
+  BottomNavigation: undefined;
   Home: undefined;
+  Appointments: undefined;
+  Explore: undefined;
+  ProfileScreen: undefined;
+  EditProfile: undefined;
   Setting: undefined;
   Category: undefined;
   WelcomeScreenFirst: undefined;
