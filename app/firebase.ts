@@ -6,13 +6,7 @@ import {getAuth,
 import {getFirestore} from 'firebase/firestore'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCjF6DEMaIOI3xVahNk1d9TaDdZ6t-u1Dw",
-    authDomain: "smsgame-8dd5d.firebaseapp.com",
-    projectId: "smsgame-8dd5d",
-    storageBucket: "smsgame-8dd5d.appspot.com",
-    messagingSenderId: "143235815853",
-    appId: "1:143235815853:web:42124f801524962618e924",
-    measurementId: "G-YH6FK60MDN"
+    ...
 };
 
 initializeApp(firebaseConfig);
