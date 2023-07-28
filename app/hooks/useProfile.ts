@@ -9,7 +9,6 @@ export const useProfile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [profile, setProfile] = useState<IProfile>();
   const [name, setName] = useState('');
-  console.log('user', user);
 
   useEffect(() => {
     if (user) {

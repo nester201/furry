@@ -9,6 +9,11 @@ export type TypeRootStackParamList = {
   Explore: undefined;
   ProfileScreen: undefined;
   EditProfile: undefined;
+  MyPetScreen: undefined;
+  AddPetScreen: undefined;
+  EditPetScreen: {
+    petId: string;
+  };
   Setting: undefined;
   Category: undefined;
   WelcomeScreenFirst: undefined;

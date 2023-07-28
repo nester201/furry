@@ -1,25 +1,25 @@
-import React, { useCallback } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React, { memo, useMemo } from 'react';
+import { StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
 import EditSVG from '../../../assets/icons/edit.svg';
 import colors from '@theme/colors';
-import { useNavigationApp } from '@hooks/useNavigationApp';
 
-const EditButton = () => {
-  const { navigate } = useNavigationApp();
+type Props = {
+  onPress: () => void;
+  style?: ViewStyle;
+};
 
-  const handlePressEdit = useCallback(() => {
-    navigate('EditProfile');
-  }, [navigate]);
+const EditButton: React.FC<Props> = ({ onPress, style }) => {
+  const containerStyle = useMemo(() => [styles.container, style && style], []);
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handlePressEdit}>
+    <TouchableOpacity style={containerStyle} onPress={onPress}>
       <EditSVG width={24} height={24} />
       <Text style={styles.text}>Edit</Text>
     </TouchableOpacity>
   );
 };
 
-export default EditButton;
+export default memo(EditButton);
 
 const styles = StyleSheet.create({
   container: {

@@ -1,13 +1,14 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import colors from '@theme/colors';
-import EditButton from '@components/Profile/EditButton';
+import EditButton from '@ui/EditButton';
 import { BOX_SHADOW, TEXT, TEXT_H2, TEXT_H3 } from '@theme/style';
 import Avatar from '@ui/Avatar';
 import { useProfile } from '@hooks/useProfile';
 import Loader from '@ui/Loader';
 import { useAuth } from '@hooks/useAuth';
 import BackButton from '@ui/BackButton';
+import { useNavigationApp } from '@hooks/useNavigationApp';
 
 type Props = {
   title: string;
@@ -17,8 +18,13 @@ type Props = {
 const HeaderProfile: React.FC<Props> = ({ title, isEdit }) => {
   const { user } = useAuth();
   const { isLoading, name } = useProfile();
+  const { navigate } = useNavigationApp();
 
   const containerStyle = useMemo(() => (isEdit ? styles.editContainer : styles.container), [isEdit]);
+
+  const handlePressEdit = useCallback(() => {
+    navigate('EditProfile');
+  }, [navigate]);
 
   return (
     <View style={containerStyle}>
@@ -31,7 +37,7 @@ const HeaderProfile: React.FC<Props> = ({ title, isEdit }) => {
             <View>
               <Text style={TEXT_H3}>{title}</Text>
             </View>
-            {!isEdit && <EditButton />}
+            {!isEdit && <EditButton onPress={handlePressEdit} />}
           </View>
           <View style={styles.wrapper}>
             <Avatar size={112} />

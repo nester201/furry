@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import FilledView from '@ui/FilledView';
 import HeaderProfile from '@components/Profile/HeaderProfile';
@@ -10,13 +10,20 @@ import InviteSVG from '../../../assets/icons/profileActions/announcement.svg';
 import QuestionSVG from '../../../assets/icons/profileActions/question.svg';
 import SettingSVG from '../../../assets/icons/profileActions/settings.svg';
 import colors from '@theme/colors';
+import { useNavigationApp } from '@hooks/useNavigationApp';
 
 const Profile = () => {
+  const { navigate } = useNavigationApp();
+
+  const handlePressMyPet = useCallback(() => {
+    navigate('MyPetScreen');
+  }, []);
+
   return (
     <FilledView style={styles.container}>
       <HeaderProfile title="Profile" />
       <FilledView>
-        <ProfileActions title={'My pets'}>
+        <ProfileActions title={'My pets'} onPress={handlePressMyPet}>
           <PetSVG width={24} height={24} fill={colors.violet} />
         </ProfileActions>
         <ProfileActions title={'My favourites'}>

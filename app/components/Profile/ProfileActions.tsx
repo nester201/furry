@@ -12,7 +12,7 @@ type Props = {
 
 const ProfileActions: React.FC<Props> = ({ onPress, title, children }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View>
         <View style={styles.iconWrapper}>{children}</View>
       </View>

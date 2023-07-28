@@ -12,4 +12,6 @@ export default {
   activeTab: '#4552CB',
   inactiveTab: '#BBC3CE',
   lightGrey: '#F8F7FB',
+  lightGrey2: '#F0F0F8',
+  grey: '#BBC3CE',
 };
